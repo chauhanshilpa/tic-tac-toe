@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { cross, circle } from "./components/icons.js";
 import GridItem from "./components/GridItem";
 import Button from "./components/Button";
 
-function App() {
+function Game() {
   const [list, setList] = useState(["", "", "", "", "", "", "", "", ""]);
-  const [lastIcon, setLastIcon] = useState(null)
+  const [lastIcon, setLastIcon] = useState(null);
   const [winnerIcon, setWinnerIcon] = useState(null);
   const [count, setCount] = useState(0);
   function isWinner() {
@@ -31,8 +32,8 @@ function App() {
   }
 
   function handleClick(gridId) {
-    if( list[gridId] === "" && winnerIcon === null){
-      const icon = lastIcon === "❌" ? "⭕" : "❌";
+    if (list[gridId] === "" && winnerIcon === null) {
+      const icon = lastIcon === cross ? circle : cross;
       setLastIcon(icon);
       const new_list = list;
       new_list[gridId] = icon;
@@ -50,21 +51,21 @@ function App() {
         >
           tic-tac-toe
         </h1>
-        <h2
+        <h3
           className="text-center"
           style={{
             fontSize: "xx-large",
-            height: "50px"
+            height: "50px",
           }}
         >
-          {winnerIcon === "❌"
+          {winnerIcon === cross
             ? "player1 won"
-            : winnerIcon === "⭕"
+            : winnerIcon === circle
             ? "player2 won"
             : count === 9 && winnerIcon === null
-            ? "draw"
+            ? "Game draw"
             : null}
-        </h2>
+        </h3>
       </div>
       <div className="container">
         <div className="row">
@@ -88,4 +89,4 @@ function App() {
   );
 }
 
-export default App;
+export default Game;

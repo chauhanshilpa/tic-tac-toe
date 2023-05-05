@@ -1,15 +1,13 @@
 import React from "react";
 
 const Button = (props) => {
-  const { setList, setWinnerIcon, setCount, setLastIcon} = props;
+  const { setList, setWinnerIcon, setCount, setLastIcon } = props;
 
   function handleReset() {
-    setList(["", "", "", "", "", "", "", "", ""]);  
+    setList(["", "", "", "", "", "", "", "", ""]);
     setWinnerIcon(null);
     setCount(0);
     setLastIcon(null);
-    // console.log(defaultList)
-    // console.log(defaultIcon)
   }
 
   return (
@@ -26,5 +24,3 @@ const Button = (props) => {
 };
 
 export default Button;
-
-
