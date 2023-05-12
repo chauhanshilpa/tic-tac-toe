@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Button = (props) => {
-  const { setList, setWinnerIcon, setIconCount, setLastIcon, row, setRow } =
-    props;
+  const {
+    setList,
+    setWinnerIcon,
+    setIconCount,
+    setLastIcon,
+    scoreTableRow,
+    setScoreTableRow,
+  } = props;
 
-  function handleReset() {
+  function resetGameToContinueMatch() {
     setList(["", "", "", "", "", "", "", "", ""]);
     setWinnerIcon(null);
     setIconCount(0);
     setLastIcon(null);
   }
 
-  function resetTable() {
-    setList(["", "", "", "", "", "", "", "", ""]);
-    setWinnerIcon(null);
-    setIconCount(0);
-    setLastIcon(null);
-    setRow([0, 0, 0]);
+  function resetGameWithNewTable() {
+    resetGameToContinueMatch();
+    setScoreTableRow([0, 0, 0]);
   }
 
   return (
@@ -26,15 +29,15 @@ const Button = (props) => {
           type="button"
           style={{ marginLeft: "95px" }}
           className="btn btn-primary my-4"
-          onClick={handleReset}
-          disabled={row[0] === 10 && "true"}
+          onClick={resetGameToContinueMatch}
+          disabled={scoreTableRow[0] === 10 && "true"}
         >
           Play Again
         </button>
         <button
           type="button"
-          class="btn btn-primary "
-          onClick={resetTable}
+          className="btn btn-primary "
+          onClick={resetGameWithNewTable}
           style={{ marginLeft: "15px" }}
         >
           Reset Table

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ScoreTable = (props) => {
-  const { row } = props;
+  const { scoreTableRow } = props;
 
   const style = {
     maxWidth: "400px",
@@ -9,7 +9,7 @@ const ScoreTable = (props) => {
     top: "0",
     position: "absolute",
     marginRight: "50px",
-    marginTop: "20px",
+    marginTop: "95px",
   };
 
   return (
@@ -32,9 +32,9 @@ const ScoreTable = (props) => {
         </thead>
         <tbody>
           <tr style={{ height: "35px" }}>
-            <th scope="row">{row[0]}</th>
-            <td>{row[1]}</td>
-            <td>{row[2]}</td>
+            <th scope="row">{scoreTableRow[0]}</th>
+            <td>{scoreTableRow[1]}</td>
+            <td>{scoreTableRow[2]}</td>
           </tr>
         </tbody>
       </table>
