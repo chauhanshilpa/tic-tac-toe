@@ -1,34 +1,51 @@
 import { useState } from "react";
+import "./App.css";
 import { cross, circle } from "./components/icons.js";
 import GridItem from "./components/GridItem";
 import Button from "./components/Button";
+import ScoreTable from "./components/ScoreTable.js";
 
 function Game() {
   const [list, setList] = useState(["", "", "", "", "", "", "", "", ""]);
   const [lastIcon, setLastIcon] = useState(null);
   const [winnerIcon, setWinnerIcon] = useState(null);
-  const [count, setCount] = useState(0);
-  function isWinner() {
+  const [iconCount, setIconCount] = useState(0);
+  const [row, setRow] = useState([0, 0, 0]);
+
+  function checkAndGetWinner() {
+    let finalValue = null;
     if (list[0] !== "" && list[0] === list[1] && list[1] === list[2]) {
-      setWinnerIcon(list[0]);
+      finalValue = list[0];
     } else if (list[0] !== "" && list[0] === list[4] && list[4] === list[8]) {
-      setWinnerIcon(list[0]);
+      finalValue = list[0];
     } else if (list[0] !== "" && list[0] === list[3] && list[3] === list[6]) {
-      setWinnerIcon(list[0]);
+      finalValue = list[0];
     } else if (list[1] !== "" && list[1] === list[4] && list[4] === list[7]) {
-      setWinnerIcon(list[1]);
+      finalValue = list[1];
     } else if (list[2] !== "" && list[2] === list[5] && list[5] === list[8]) {
-      setWinnerIcon(list[2]);
+      finalValue = list[2];
     } else if (list[2] !== "" && list[2] === list[4] && list[4] === list[6]) {
-      setWinnerIcon(list[2]);
+      finalValue = list[2];
     } else if (list[3] !== "" && list[3] === list[4] && list[4] === list[5]) {
-      setWinnerIcon(list[3]);
+      finalValue = list[3];
     } else if (list[6] !== "" && list[6] === list[7] && list[7] === list[8]) {
-      setWinnerIcon(list[6]);
-    } else {
-      setWinnerIcon(null);
+      finalValue = list[6];
     }
-    setCount(count + 1);
+    setWinnerIcon(finalValue);
+    return finalValue;
+  }
+  
+  function playersScore(winner, count) {
+    let newRow = row;
+    if(winner !== null || count === 9){
+      newRow[0] = newRow[0] + 1
+      if(winner === cross){
+        newRow[1] = newRow[1] + 1
+      }else if(winner === circle){
+        newRow[2] = newRow[2] + 1
+      }
+    }
+    setRow(newRow)
   }
 
   function handleClick(gridId) {
@@ -38,7 +55,10 @@ function Game() {
       const new_list = list;
       new_list[gridId] = icon;
       setList(new_list);
-      isWinner();
+      let newCounts = iconCount + 1
+      setIconCount(newCounts);
+      let winner = checkAndGetWinner();
+      playersScore(winner, newCounts);
     }
   }
 
@@ -46,45 +66,55 @@ function Game() {
     <>
       <div>
         <h1
-          className="text-center"
-          style={{ color: "red", fontSize: "xxx-large" }}
+          style={{
+            color: "red",
+            fontSize: "xxx-large",
+            marginTop: "20px",
+            marginLeft: "95px",
+          }}
         >
           tic-tac-toe
         </h1>
-        <h3
-          className="text-center"
-          style={{
-            fontSize: "xx-large",
-            height: "50px",
-          }}
-        >
+        <h3 style={{ color: "green", height: "10px", marginLeft: "95px" }}>
           {winnerIcon === cross
             ? "player1 won"
             : winnerIcon === circle
             ? "player2 won"
-            : count === 9 && winnerIcon === null
+            : iconCount === 9
             ? "Game draw"
             : null}
         </h3>
-      </div>
-      <div className="container">
-        <div className="row">
-          {list.map((el, idx) => (
-            <GridItem
-              key={idx}
-              gridId={idx}
-              icon={list[idx]}
-              handleClick={handleClick}
-            />
-          ))}
+        <div
+          className="container"
+          style={{
+            marginLeft: "95px",
+            marginTop: "40px",
+            width: "30%",
+            display: "block",
+          }}
+        >
+          <div className="row">
+            {list.map((el, idx) => (
+              <GridItem
+                key={idx}
+                gridId={idx}
+                icon={list[idx]}
+                handleClick={handleClick}
+              />
+            ))}
+          </div>
         </div>
+        <ScoreTable row={row} />
+        <Button
+          setList={setList}
+          setWinnerIcon={setWinnerIcon}
+          setIconCount={setIconCount}
+          setLastIcon={setLastIcon}
+          winnerIcon={winnerIcon}
+          row={row}
+          setRow={setRow}
+        />
       </div>
-      <Button
-        setList={setList}
-        setWinnerIcon={setWinnerIcon}
-        setCount={setCount}
-        setLastIcon={setLastIcon}
-      />
     </>
   );
 }
