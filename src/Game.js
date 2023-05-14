@@ -4,6 +4,7 @@ import { cross, circle } from "./components/icons.js";
 import GridItem from "./components/GridItem";
 import Button from "./components/Button";
 import ScoreTable from "./components/ScoreTable.js";
+import ChooseIconPairs from "./components/ChooseIconPairs";
 
 function Game() {
   const [iconList, setIconList] = useState([
@@ -19,8 +20,15 @@ function Game() {
   ]);
   const [lastIcon, setLastIcon] = useState(null);
   const [winnerIcon, setWinnerIcon] = useState(null);
+  const [player1Icon, setPlayer1Icon] = useState(cross);
+  const [player2Icon, setPlayer2Icon] = useState(circle);
   const [iconCount, setIconCount] = useState(0);
   const [scoreTableRow, setScoreTableRow] = useState([0, 0, 0]);
+
+  function handleIconChoice(icon1, icon2) {
+    setPlayer1Icon(icon1);
+    setPlayer2Icon(icon2);
+  }
 
   function checkAndGetWinner2() {
     let finalValue = null;
@@ -81,9 +89,9 @@ function Game() {
     let newRow = scoreTableRow;
     if (winnerIcon !== null || iconCounts === 9) {
       newRow[0] = newRow[0] + 1;
-      if (winnerIcon === cross) {
+      if (winnerIcon === player1Icon) {
         newRow[1] = newRow[1] + 1;
-      } else if (winnerIcon === circle) {
+      } else if (winnerIcon === player2Icon) {
         newRow[2] = newRow[2] + 1;
       }
     }
@@ -92,7 +100,7 @@ function Game() {
 
   function handleGridItemClick(gridId) {
     if (iconList[gridId] === "" && winnerIcon === null) {
-      const icon = lastIcon === cross ? circle : cross;
+      const icon = lastIcon === player1Icon ? player2Icon : player1Icon;
       setLastIcon(icon);
       const new_list = iconList;
       new_list[gridId] = icon;
@@ -117,10 +125,17 @@ function Game() {
         >
           tic-tac-toe
         </h1>
-        <h4 style={{ color: "green", height: "2px", marginLeft: "95px", fontSize: "1.5rem" }}>
-          {winnerIcon === cross
+        <h4
+          style={{
+            color: "green",
+            height: "2px",
+            marginLeft: "95px",
+            fontSize: "1.5rem",
+          }}
+        >
+          {winnerIcon === player1Icon
             ? "Player1 Won"
-            : winnerIcon === circle
+            : winnerIcon === player2Icon
             ? "Player2 Won"
             : iconCount === 9
             ? "Game Draw"
@@ -147,6 +162,7 @@ function Game() {
           </div>
         </div>
         <ScoreTable scoreTableRow={scoreTableRow} />
+        <ChooseIconPairs handleIconChoice={handleIconChoice} />
         <Button
           setList={setIconList}
           setWinnerIcon={setWinnerIcon}
@@ -155,6 +171,8 @@ function Game() {
           winnerIcon={winnerIcon}
           scoreTableRow={scoreTableRow}
           setScoreTableRow={setScoreTableRow}
+          setPlayer1Icon={setPlayer1Icon}
+          setPlayer2Icon={setPlayer2Icon}
         />
       </div>
     </>

@@ -9,7 +9,7 @@ const ScoreTable = (props) => {
     top: "0",
     position: "absolute",
     marginRight: "50px",
-    marginTop: "95px",
+    marginTop: "50px",
   };
 
   return (
