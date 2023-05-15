@@ -1,15 +1,27 @@
 body {
-  background-color: #E8EAE6;
+  background-color: #e8eae6;
 }
 
 .player1 {
-  color: #B04759;
+  color: #b04759;
 }
 
-.player2{
-  color: #19A7CE;
+.player2 {
+  color: #19a7ce;
+}
+
+.table {
+  border-color: #e7cbcb;
+}
+
+thead {
+  background-color: #e7cbcb;
 }
 
 .table-heading {
   color: #0b00a0;
+}
+
+.icons-table > tbody > tr.active {
+  background-color: #d8d8d8;
 }

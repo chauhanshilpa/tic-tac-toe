@@ -25,18 +25,19 @@ The game features include:
 1) A simple and intuitive user interface.
 2) A heading that tracks of wins and draws.
 3) A reset button that allows players to start a new game at any time.
+4) A score table that tracks total matches and the score obtained by both players.
+5) Choices between desired icons for players.
 
 ## Credits
 
-This game was created using Javascript React library . The icon was obtained from fontawesome. The components style was obtained from bootstrap library of CSS.
+This game was created using Javascript React library . The icons was obtained from fontawesome. The components style was obtained from bootstrap library of CSS and some custom CSS is also applied according to need.
 
 ## Future Development
 
 Future updates to the game may include:
 
-1) A dashboard having total points obtained by a both players which shows the final winner.
-2) options between some pairs of icon to play the game.
-3) An AI opponent.
+1) A responsive UI.
+2) An AI opponent.
 
 ## Author
 

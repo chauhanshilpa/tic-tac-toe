@@ -15,10 +15,7 @@ const ScoreTable = (props) => {
   return (
     <div className="container" style={style}>
       <h4 className="table-heading">Score Board</h4>
-      <table
-        className="table table-bordered score_table"
-        style={{ borderColor: "#D8D8D8" }}
-      >
+      <table className="table table-bordered score-table">
         <thead>
           <tr>
             <th scope="col">Total Match</th>

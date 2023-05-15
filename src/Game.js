@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import { cross, circle } from "./components/icons.js";
 import GridItem from "./components/GridItem";
-import Button from "./components/Button";
+import Buttons from "./components/Buttons";
 import ScoreTable from "./components/ScoreTable.js";
 import ChooseIconPairs from "./components/ChooseIconPairs";
+import icons from "./components/icons";
 
 function Game() {
   const [iconList, setIconList] = useState([
@@ -20,14 +20,17 @@ function Game() {
   ]);
   const [lastIcon, setLastIcon] = useState(null);
   const [winnerIcon, setWinnerIcon] = useState(null);
-  const [player1Icon, setPlayer1Icon] = useState(cross);
-  const [player2Icon, setPlayer2Icon] = useState(circle);
   const [iconCount, setIconCount] = useState(0);
   const [scoreTableRow, setScoreTableRow] = useState([0, 0, 0]);
+  const [player1Icon, setPlayer1Icon] = useState(icons[0].icon1);
+  const [player2Icon, setPlayer2Icon] = useState(icons[0].icon2);
+  const [selectedIconRowNumber, setSelectedIconRowNumber] = useState(0);
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
-  function handleIconChoice(icon1, icon2) {
+  function handleIconChoice(icon1, icon2, id) {
     setPlayer1Icon(icon1);
     setPlayer2Icon(icon2);
+    setSelectedIconRowNumber(id);
   }
 
   function checkAndGetWinner2() {
@@ -110,6 +113,9 @@ function Game() {
       let winnerIcon = checkAndGetWinner2();
       playersScore(winnerIcon, newIconCounts);
     }
+    if (lastIcon === null) {
+      setIsGameStarted(true);
+    }
   }
 
   return (
@@ -162,8 +168,12 @@ function Game() {
           </div>
         </div>
         <ScoreTable scoreTableRow={scoreTableRow} />
-        <ChooseIconPairs handleIconChoice={handleIconChoice} />
-        <Button
+        <ChooseIconPairs
+          handleIconChoice={handleIconChoice}
+          selectedIconRowNumber={selectedIconRowNumber}
+          isGameStarted={isGameStarted}
+        />
+        <Buttons
           setList={setIconList}
           setWinnerIcon={setWinnerIcon}
           setIconCount={setIconCount}
@@ -173,6 +183,8 @@ function Game() {
           setScoreTableRow={setScoreTableRow}
           setPlayer1Icon={setPlayer1Icon}
           setPlayer2Icon={setPlayer2Icon}
+          setSelectedIconRowNumber={setSelectedIconRowNumber}
+          setIsGameStarted={setIsGameStarted}
         />
       </div>
     </>

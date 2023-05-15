@@ -1,7 +1,7 @@
 import React from "react";
-import {cross, circle} from "./icons";
+import icons from "./icons";
 
-const Button = (props) => {
+const Buttons = (props) => {
   const {
     setList,
     setWinnerIcon,
@@ -10,7 +10,9 @@ const Button = (props) => {
     scoreTableRow,
     setScoreTableRow,
     setPlayer1Icon,
-    setPlayer2Icon
+    setPlayer2Icon,
+    setSelectedIconRowNumber,
+    setIsGameStarted,
   } = props;
 
   function resetGameToContinueMatch() {
@@ -18,13 +20,15 @@ const Button = (props) => {
     setWinnerIcon(null);
     setIconCount(0);
     setLastIcon(null);
+    setIsGameStarted(false);
   }
 
   function resetGameWithNewTable() {
     resetGameToContinueMatch();
     setScoreTableRow([0, 0, 0]);
-    setPlayer1Icon(cross)
-    setPlayer2Icon(circle)
+    setPlayer1Icon(icons[0].icon1);
+    setPlayer2Icon(icons[0].icon2);
+    setSelectedIconRowNumber(0);
   }
 
   return (
@@ -52,4 +56,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default Buttons;
