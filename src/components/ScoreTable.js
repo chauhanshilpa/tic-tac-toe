@@ -4,21 +4,26 @@ const ScoreTable = (props) => {
   const { scoreTableRow } = props;
 
   const style = {
-    maxWidth: "400px",
-    right: "0",
+    maxWidth: "350px",
+    right: "400px",
     top: "0",
     position: "absolute",
-    marginRight: "50px",
-    marginTop: "50px",
+    marginRight: "15px",
+    marginTop: "110px",
   };
 
   return (
     <div className="container" style={style}>
       <h4 className="table-heading">Score Board</h4>
-      <table className="table table-bordered score-table">
+      <table
+        className="table table-bordered score-table"
+        style={{ textAlign: "center" }}
+      >
         <thead>
           <tr>
-            <th scope="col">Total Match</th>
+            <th scope="col" className="winner-icon">
+              Icons Pair
+            </th>
             <th scope="col" className="player1">
               Player1
             </th>
@@ -28,11 +33,16 @@ const ScoreTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr style={{ height: "35px" }}>
-            <th scope="row">{scoreTableRow[0]}</th>
-            <td>{scoreTableRow[1]}</td>
-            <td>{scoreTableRow[2]}</td>
-          </tr>
+          {scoreTableRow.map((el) => (
+            <tr style={{ height: "35px" }}>
+              <td>
+                <span style={{ margin: "5px", fontSize: "15px" }}>{el[0]}</span>
+                <span style={{ margin: "5px", fontSize: "15px" }}>{el[1]}</span>
+              </td>
+              <td>{el[2]}</td>
+              <td>{el[3]}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

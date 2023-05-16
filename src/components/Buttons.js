@@ -25,10 +25,10 @@ const Buttons = (props) => {
 
   function resetGameWithNewTable() {
     resetGameToContinueMatch();
-    setScoreTableRow([0, 0, 0]);
-    setPlayer1Icon(icons[0].icon1);
-    setPlayer2Icon(icons[0].icon2);
-    setSelectedIconRowNumber(0);
+    setScoreTableRow([]);
+    setPlayer1Icon(icons[3].icon1);
+    setPlayer2Icon(icons[3].icon2);
+    setSelectedIconRowNumber(3);
   }
 
   return (

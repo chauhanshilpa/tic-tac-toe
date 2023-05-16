@@ -2,17 +2,17 @@ const icons = [
   {
     icon1: (
       <i
-        className="fa-xmark fa-solid fa-2xl"
-        id="cross"
-        style={{ color: "#1B9C85", fontSize: "40px" }}
+        className="fa-regular fa-circle-check fa-2xl"
+        id="check"
+        style={{ color: "#9DC08B" }}
       ></i>
     ),
 
     icon2: (
       <i
-        className="fa-sharp fa-regular fa-circle fa-2xl"
-        id="circle"
-        style={{ color: "#D25380" }}
+        className="fa-regular fa-circle-xmark fa-2xl"
+        id="circle-xmark"
+        style={{ color: "#FF78F0" }}
       ></i>
     ),
   },
@@ -55,17 +55,17 @@ const icons = [
   {
     icon1: (
       <i
-        className="fa-regular fa-circle-check fa-2xl"
-        id="check"
-        style={{ color: "#9DC08B" }}
+        className="fa-xmark fa-solid fa-2xl"
+        id="cross"
+        style={{ color: "#1B9C85", fontSize: "40px" }}
       ></i>
     ),
 
     icon2: (
       <i
-        className="fa-regular fa-circle-xmark fa-2xl"
-        id="circle-xmark"
-        style={{ color: "#FF78F0" }}
+        className="fa-sharp fa-regular fa-circle fa-2xl"
+        id="circle"
+        style={{ color: "#D25380" }}
       ></i>
     ),
   },

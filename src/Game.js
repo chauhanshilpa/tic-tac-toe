@@ -21,10 +21,10 @@ function Game() {
   const [lastIcon, setLastIcon] = useState(null);
   const [winnerIcon, setWinnerIcon] = useState(null);
   const [iconCount, setIconCount] = useState(0);
-  const [scoreTableRow, setScoreTableRow] = useState([0, 0, 0]);
-  const [player1Icon, setPlayer1Icon] = useState(icons[0].icon1);
-  const [player2Icon, setPlayer2Icon] = useState(icons[0].icon2);
-  const [selectedIconRowNumber, setSelectedIconRowNumber] = useState(0);
+  const [scoreTableRow, setScoreTableRow] = useState([]);
+  const [player1Icon, setPlayer1Icon] = useState(icons[3].icon1);
+  const [player2Icon, setPlayer2Icon] = useState(icons[3].icon2);
+  const [selectedIconRowNumber, setSelectedIconRowNumber] = useState(3);
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   function handleIconChoice(icon1, icon2, id) {
@@ -88,17 +88,16 @@ function Game() {
     return finalValue;
   }
 
-  function playersScore(winnerIcon, iconCounts) {
-    let newRow = scoreTableRow;
-    if (winnerIcon !== null || iconCounts === 9) {
-      newRow[0] = newRow[0] + 1;
+  function playersScore(winnerIcon) {
+    let newRow = [];
+    if (winnerIcon !== null) {
       if (winnerIcon === player1Icon) {
-        newRow[1] = newRow[1] + 1;
+        newRow.push(player1Icon, player2Icon, 1, 0);
       } else if (winnerIcon === player2Icon) {
-        newRow[2] = newRow[2] + 1;
+        newRow.push(player1Icon, player2Icon, 0, 1);
       }
+      setScoreTableRow((prev) => [...prev, newRow]);
     }
-    setScoreTableRow(newRow);
   }
 
   function handleGridItemClick(gridId) {
@@ -111,7 +110,7 @@ function Game() {
       let newIconCounts = iconCount + 1;
       setIconCount(newIconCounts);
       let winnerIcon = checkAndGetWinner2();
-      playersScore(winnerIcon, newIconCounts);
+      playersScore(winnerIcon);
     }
     if (lastIcon === null) {
       setIsGameStarted(true);
@@ -167,7 +166,7 @@ function Game() {
             ))}
           </div>
         </div>
-        <ScoreTable scoreTableRow={scoreTableRow} />
+        <ScoreTable scoreTableRow={scoreTableRow} winnerIcon={winnerIcon} />
         <ChooseIconPairs
           handleIconChoice={handleIconChoice}
           selectedIconRowNumber={selectedIconRowNumber}
