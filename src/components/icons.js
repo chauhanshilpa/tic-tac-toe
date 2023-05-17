@@ -21,7 +21,7 @@ const icons = [
     icon1: (
       <i
         className="fa-solid fa-ice-cream fa-2xl"
-        style={{ color: "#ECC5FB" }}
+        style={{ color: "#E5BEEC" }}
       ></i>
     ),
     icon2: (

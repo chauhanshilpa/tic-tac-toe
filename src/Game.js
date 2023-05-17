@@ -167,11 +167,11 @@ function Game() {
           </div>
         </div>
         <ScoreTable scoreTableRow={scoreTableRow} winnerIcon={winnerIcon} />
-        <ChooseIconPairs
-          handleIconChoice={handleIconChoice}
-          selectedIconRowNumber={selectedIconRowNumber}
-          isGameStarted={isGameStarted}
-        />
+          <ChooseIconPairs
+            handleIconChoice={handleIconChoice}
+            selectedIconRowNumber={selectedIconRowNumber}
+            isGameStarted={isGameStarted}
+          />
         <Buttons
           setList={setIconList}
           setWinnerIcon={setWinnerIcon}

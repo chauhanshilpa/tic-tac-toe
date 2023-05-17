@@ -15,27 +15,28 @@ const ScoreTable = (props) => {
   return (
     <div className="container" style={style}>
       <h4 className="table-heading">Score Board</h4>
-      <div className="table-scroll">
+      <div className={`table-scroll ${scoreTableRow.length < 7 && "hide-scrollbar"}`}>
         <table
-          className="table table-bordered score-table scroll"
+          className="table table-bordered score-table"
           style={{ textAlign: "center" }}
+
         >
-          <thead>
+          <thead className="sticky-top">
             <tr>
               <th scope="col" className="winner-icon">
                 Icons Pair
               </th>
-              <th scope="col" className="player1">
+              <th scope="col" className="player1" >
                 Player1
               </th>
-              <th scope="col" className="player2">
+              <th scope="col" className="player2" >
                 Player2
               </th>
             </tr>
           </thead>
           <tbody>
-            {scoreTableRow.map((el) => (
-              <tr style={{ height: "35px" }}>
+            {scoreTableRow.map((el,idx) => (
+              <tr style={{ height: "35px" }} key={idx}>
                 <td>
                   <span style={{ margin: "5px", fontSize: "15px" }}>
                     {el[0]}

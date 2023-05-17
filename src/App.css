@@ -16,8 +16,16 @@ body {
 
 .table-scroll {
   height: 315px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;                     /* chrome and some others*/
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 thead {

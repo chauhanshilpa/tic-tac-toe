@@ -17,8 +17,8 @@ const ChoosePairs = (props) => {
     <div className="container" style={style}>
       <h4 className="table-heading">Choose your favourite pair</h4>
       <div className="table-scroll">
-        <table className="table icons-table table-bordered table-hover ">
-          <thead>
+        <table className="table icons-table table-bordered table-hover">
+          <thead className="sticky-top">
             <tr>
               <th scope="col" className="player1">
                 Player1
@@ -34,7 +34,13 @@ const ChoosePairs = (props) => {
                 onClick={() => handleIconChoice(el.icon1, el.icon2, idx)}
                 key={idx}
                 className={selectedIconRowNumber === idx ? "active" : null}
-                style={{ pointerEvents: isGameStarted && "none" }}
+                style={{
+                  pointerEvents: isGameStarted && "none",
+                  filter:
+                    isGameStarted && selectedIconRowNumber !== idx
+                      ? "blur(2px)"
+                      : "none",
+                }}
               >
                 <td>{el.icon1}</td>
                 <td>{el.icon2}</td>
