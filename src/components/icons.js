@@ -19,15 +19,12 @@ const icons = [
 
   {
     icon1: (
-      <i
-        className="fa-solid fa-ice-cream fa-2xl"
-        style={{ color: "#E5BEEC" }}
-      ></i>
+      <i className="fa-solid fa-person fa-2xl" style={{ color: "#576CBC" }}></i>
     ),
     icon2: (
       <i
-        className="fa-solid fa-mug-hot fa-2xl"
-        style={{ color: "#D5B4B4" }}
+        className="fa-solid fa-person-dress fa-2xl"
+        style={{ color: "#E8A0BF" }}
       ></i>
     ),
   },
@@ -35,15 +32,12 @@ const icons = [
   {
     icon1: (
       <i
-        className="fa-solid fa-thumbs-up fa-2xl"
-        style={{ color: "#617143" }}
+        className="fa-sharp fa-solid fa-sun fa-2xl"
+        style={{ color: "#FC4F00" }}
       ></i>
     ),
     icon2: (
-      <i
-        className="fa-solid fa-thumbs-down fa-2xl"
-        style={{ color: "#781D42" }}
-      ></i>
+      <i className="fa-solid fa-moon fa-2xl" style={{ color: "#9BA4B5" }}></i>
     ),
   },
 
@@ -97,12 +91,15 @@ const icons = [
 
   {
     icon1: (
-      <i className="fa-solid fa-person fa-2xl" style={{ color: "#576CBC" }}></i>
+      <i
+        className="fa-solid fa-ice-cream fa-2xl"
+        style={{ color: "#E5BEEC" }}
+      ></i>
     ),
     icon2: (
       <i
-        className="fa-solid fa-person-dress fa-2xl"
-        style={{ color: "#E8A0BF" }}
+        className="fa-solid fa-mug-hot fa-2xl"
+        style={{ color: "#D5B4B4" }}
       ></i>
     ),
   },
@@ -110,12 +107,15 @@ const icons = [
   {
     icon1: (
       <i
-        className="fa-sharp fa-solid fa-sun fa-2xl"
-        style={{ color: "#FC4F00" }}
+        className="fa-solid fa-thumbs-up fa-2xl"
+        style={{ color: "#617143" }}
       ></i>
     ),
     icon2: (
-      <i className="fa-solid fa-moon fa-2xl" style={{ color: "#9BA4B5" }}></i>
+      <i
+        className="fa-solid fa-thumbs-down fa-2xl"
+        style={{ color: "#781D42" }}
+      ></i>
     ),
   },
 

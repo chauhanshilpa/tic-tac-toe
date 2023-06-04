@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import GridItem from "./components/GridItem";
 import Buttons from "./components/Buttons";
@@ -26,6 +26,14 @@ function Game() {
   const [player2Icon, setPlayer2Icon] = useState(icons[3].icon2);
   const [selectedIconRowNumber, setSelectedIconRowNumber] = useState(3);
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const scoreTableBottomRowRef = useRef(null);
+
+  let gridItemId = 0;
+
+  const scrollToLastRow = () => {
+    scoreTableBottomRowRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToLastRow, [scoreTableRow]);
 
   function handleIconChoice(icon1, icon2, id) {
     setPlayer1Icon(icon1);
@@ -119,72 +127,70 @@ function Game() {
 
   return (
     <>
-      <div>
-        <h1
-          style={{
-            color: "red",
-            fontSize: "4rem",
-            marginTop: "20px",
-            marginLeft: "95px",
-          }}
-        >
-          tic-tac-toe
-        </h1>
-        <h4
-          style={{
-            color: "green",
-            height: "2px",
-            marginLeft: "95px",
-            fontSize: "1.5rem",
-          }}
-        >
-          {winnerIcon === player1Icon
-            ? "Player1 Won"
-            : winnerIcon === player2Icon
-            ? "Player2 Won"
-            : iconCount === 9
-            ? "Game Draw"
-            : null}
-        </h4>
-        <div
-          className="container"
-          style={{
-            marginLeft: "95px",
-            marginTop: "40px",
-            width: "30%",
-            display: "block",
-          }}
-        >
-          <div className="row">
-            {iconList.map((el, idx) => (
-              <GridItem
-                key={idx}
-                gridId={idx}
-                icon={iconList[idx]}
-                onClick={handleGridItemClick}
-              />
-            ))}
+      <div className="game container">
+        <h1 className="game-heading">tic-tac-toe</h1>
+        <div className="row">
+          <div className="container col-lg-4 col-md-12 mb-5">
+            <h4 className="game-winner">
+              {winnerIcon === player1Icon
+                ? "Player1 Won"
+                : winnerIcon === player2Icon
+                ? "Player2 Won"
+                : iconCount === 9
+                ? "Game Draw"
+                : null}
+            </h4>
+            <div class="grid container">
+              {Array(3)
+                .fill(0)
+                .map((el, i) => (
+                  <div className="row" key={i}>
+                    {Array(3)
+                      .fill(0)
+                      .map(() => {
+                        const colIndex = gridItemId;
+                        gridItemId++;
+                        return (
+                          <GridItem
+                            key={colIndex}
+                            gridItemId={colIndex}
+                            onClick={handleGridItemClick}
+                            icon={iconList[colIndex]}
+                          />
+                        );
+                      })}
+                  </div>
+                ))}
+            </div>
+            <Buttons
+              setList={setIconList}
+              setWinnerIcon={setWinnerIcon}
+              setIconCount={setIconCount}
+              setLastIcon={setLastIcon}
+              winnerIcon={winnerIcon}
+              scoreTableRow={scoreTableRow}
+              setScoreTableRow={setScoreTableRow}
+              setPlayer1Icon={setPlayer1Icon}
+              setPlayer2Icon={setPlayer2Icon}
+              setSelectedIconRowNumber={setSelectedIconRowNumber}
+              setIsGameStarted={setIsGameStarted}
+            />
+          </div>
+          <div className="col-lg-4 col-md-12">
+            <ChooseIconPairs
+              handleIconChoice={handleIconChoice}
+              selectedIconRowNumber={selectedIconRowNumber}
+              isGameStarted={isGameStarted}
+            />
+          </div>
+           <div className="col-lg-4 col-md-12">
+            <ScoreTable
+              scoreTableRow={scoreTableRow}
+              winnerIcon={winnerIcon}
+              scoreTableBottomRowRef={scoreTableBottomRowRef}
+            />
           </div>
         </div>
-        <ScoreTable scoreTableRow={scoreTableRow} winnerIcon={winnerIcon} />
-          <ChooseIconPairs
-            handleIconChoice={handleIconChoice}
-            selectedIconRowNumber={selectedIconRowNumber}
-            isGameStarted={isGameStarted}
-          />
-        <Buttons
-          setList={setIconList}
-          setWinnerIcon={setWinnerIcon}
-          setIconCount={setIconCount}
-          setLastIcon={setLastIcon}
-          winnerIcon={winnerIcon}
-          scoreTableRow={scoreTableRow}
-          setScoreTableRow={setScoreTableRow}
-          setPlayer1Icon={setPlayer1Icon}
-          setPlayer2Icon={setPlayer2Icon}
-          setSelectedIconRowNumber={setSelectedIconRowNumber}
-          setIsGameStarted={setIsGameStarted}
-        />
       </div>
     </>
   );

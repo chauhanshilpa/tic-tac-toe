@@ -1,41 +1,53 @@
-body {
-  background-color: #e8eae6;
+body,
+.table td {
+  background-color: rgb(246, 247, 245);
 }
 
-.player1 {
-  color: #b04759;
+.game {
+  margin-top: 1.5rem;
 }
 
-.player2 {
-  color: #19a7ce;
+h1 {
+  font-size: 5rem;
+  color: rgb(233, 23, 23);
+}
+
+.game-winner {
+  color: green;
+  height: 1.8rem;
+}
+
+.grid-item {
+  border: solid #0c134f;
+  height: 100px;
+}
+
+.table-scroll {
+  height: 300px;
+  overflow-y: auto;
 }
 
 .table {
   border-color: #e7cbcb;
-}
-
-.table-scroll {
-  height: 315px;
-  overflow-y: auto;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;                     /* chrome and some others*/
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-thead {
-  background-color: #e7cbcb;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .table-heading {
   color: #0b00a0;
 }
 
-.icons-table > tbody > tr.active {
-  background-color: #d8d8d8;
+.table th {
+  background-color: #e7cbcb;
 }
+
+.table td,
+.table th {
+  border: 1px solid #e7cbcb;
+}
+
+tr.active > td {
+  background-color: #fef2f4;
+}
+

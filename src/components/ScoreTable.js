@@ -1,41 +1,26 @@
-import React from "react";
-
 const ScoreTable = (props) => {
-  const { scoreTableRow } = props;
-
-  const style = {
-    maxWidth: "350px",
-    right: "400px",
-    top: "0",
-    position: "absolute",
-    marginRight: "15px",
-    marginTop: "110px",
-  };
+  const { scoreTableRow, scoreTableBottomRowRef } = props;
 
   return (
-    <div className="container" style={style}>
+    <>
       <h4 className="table-heading">Score Board</h4>
-      <div className={`table-scroll ${scoreTableRow.length < 7 && "hide-scrollbar"}`}>
-        <table
-          className="table table-bordered score-table"
-          style={{ textAlign: "center" }}
-
-        >
+      <div className="score-table text-center table-scroll mb-5">
+        <table className="table table-bordered">
           <thead className="sticky-top">
             <tr>
-              <th scope="col" className="winner-icon">
+              <th scope="col">
                 Icons Pair
               </th>
-              <th scope="col" className="player1" >
+              <th scope="col">
                 Player1
               </th>
-              <th scope="col" className="player2" >
+              <th scope="col">
                 Player2
               </th>
             </tr>
           </thead>
           <tbody>
-            {scoreTableRow.map((el,idx) => (
+            {scoreTableRow.map((el, idx) => (
               <tr style={{ height: "35px" }} key={idx}>
                 <td>
                   <span style={{ margin: "5px", fontSize: "15px" }}>
@@ -49,10 +34,11 @@ const ScoreTable = (props) => {
                 <td>{el[3]}</td>
               </tr>
             ))}
+            <div className="bottom row" ref={scoreTableBottomRowRef} />
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

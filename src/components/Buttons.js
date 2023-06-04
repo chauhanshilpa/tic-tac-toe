@@ -36,8 +36,7 @@ const Buttons = (props) => {
       <div>
         <button
           type="button"
-          style={{ marginLeft: "95px" }}
-          className="btn btn-primary my-4"
+          className="btn btn-primary mt-4"
           onClick={resetGameToContinueMatch}
           disabled={scoreTableRow[0] === 10 && "true"}
         >
@@ -45,9 +44,8 @@ const Buttons = (props) => {
         </button>
         <button
           type="button"
-          className="btn btn-primary "
+          className="btn btn-primary mt-4 mx-2"
           onClick={resetGameWithNewTable}
-          style={{ marginLeft: "15px" }}
         >
           Reset Table
         </button>

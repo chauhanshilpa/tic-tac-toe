@@ -4,26 +4,17 @@ import icons from "./icons";
 const ChoosePairs = (props) => {
   const { handleIconChoice, selectedIconRowNumber, isGameStarted } = props;
 
-  const style = {
-    maxWidth: "350px",
-    right: "0",
-    top: "0",
-    position: "absolute",
-    marginRight: "50px",
-    marginTop: "110px",
-  };
-
   return (
-    <div className="container" style={style}>
+    <>
       <h4 className="table-heading">Choose your favourite pair</h4>
-      <div className="table-scroll">
-        <table className="table icons-table table-bordered table-hover">
+      <div className="chooseIcon-table table-scroll text-center mb-5">
+        <table className="table table-bordered table-hover">
           <thead className="sticky-top">
             <tr>
-              <th scope="col" className="player1">
+              <th scope="col">
                 Player1
               </th>
-              <th scope="col" className="player2">
+              <th scope="col">
                 Player2
               </th>
             </tr>
@@ -49,7 +40,7 @@ const ChoosePairs = (props) => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

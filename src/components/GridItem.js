@@ -1,12 +1,10 @@
 const GridItem = (props) => {
-  const { gridId, icon, onClick } = props;
+  const { gridItemId, icon, onClick } = props;
 
   return (
     <div
-      className="col-4 col-sm-4 text-center p-5"
-      style={{ border: "solid", height: "20px", borderColor: "#0C134F" }}
-      onClick={() => onClick(gridId)}
-      id={gridId}
+      className="grid-item col-4 col-sm-4 col-md-4 d-flex justify-content-center align-items-center"
+      onClick={() => onClick(gridItemId)}
     >
       {icon}
     </div>
@@ -14,3 +12,4 @@ const GridItem = (props) => {
 };
 
 export default GridItem;
+
