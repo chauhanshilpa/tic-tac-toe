@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./App.css";
+import "./Game.css";
 import GridItem from "./components/GridItem";
 import Buttons from "./components/Buttons";
 import ScoreTable from "./components/ScoreTable.js";
@@ -33,6 +33,7 @@ function Game() {
   const scrollToLastRow = () => {
     scoreTableBottomRowRef.current.scrollIntoView({ behavior: "smooth" });
   };
+  
   useEffect(scrollToLastRow, [scoreTableRow]);
 
   function handleIconChoice(icon1, icon2, id) {
