@@ -5,7 +5,7 @@ The player who succeeds in placing three of their marks in a horizontal, vertica
 
 ## Installation
 
- Open terminal of your local machine, clone  [repository](https://github.com/chauhanshilpa/tic-tac-toe), run the command `npm install` and  then `run npm start`
+ Open terminal of your local machine, clone repository, run the command `npm install` and  then `run npm start`
 
 ## Game Controls
 
