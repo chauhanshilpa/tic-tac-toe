@@ -25,6 +25,9 @@ The game features include:
 4) Choices between desired icons pair for players.
 5) A score table that shows the pair of icons with which game was played and the score obtained by both players.
 
+   <img width="960" alt="game user-interface" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/2cd87d2d-7ba3-4567-9533-28dd256e7b04">
+
+
 ## Credits
 
 This game was created using React. The icons were obtained from [fontawesome](https://fontawesome.com/). The components style was obtained from [bootstrap](https://getbootstrap.com/)  and some custom style.
