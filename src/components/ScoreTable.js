@@ -8,15 +8,9 @@ const ScoreTable = (props) => {
         <table className="table table-bordered">
           <thead className="sticky-top">
             <tr>
-              <th scope="col">
-                Icons Pair
-              </th>
-              <th scope="col">
-                Player1
-              </th>
-              <th scope="col">
-                Player2
-              </th>
+              <th scope="col">Icons Pair</th>
+              <th scope="col">Player1</th>
+              <th scope="col">Player2</th>
             </tr>
           </thead>
           <tbody>
@@ -34,9 +28,9 @@ const ScoreTable = (props) => {
                 <td>{el[3]}</td>
               </tr>
             ))}
-            <div className="bottom row" ref={scoreTableBottomRowRef} />
           </tbody>
         </table>
+        <div className="bottom row" ref={scoreTableBottomRowRef} />
       </div>
     </>
   );

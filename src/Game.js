@@ -141,7 +141,7 @@ function Game() {
                 ? "Game Draw"
                 : null}
             </h4>
-            <div class="grid container">
+            <div className="grid container">
               {Array(3)
                 .fill(0)
                 .map((el, i) => (
