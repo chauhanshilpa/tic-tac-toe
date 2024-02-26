@@ -1,3 +1,7 @@
+body{
+  overflow-y: hidden;
+}
+
 body,
 .table td {
   background-color: rgb(246, 247, 245);
