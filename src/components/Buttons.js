@@ -3,7 +3,7 @@ import icons from "./icons";
 
 const Buttons = (props) => {
   const {
-    setList,
+    setIconList,
     setWinnerIcon,
     setIconCount,
     setLastIcon,
@@ -16,7 +16,7 @@ const Buttons = (props) => {
   } = props;
 
   function resetGameToContinueMatch() {
-    setList(["", "", "", "", "", "", "", "", ""]);
+    setIconList(["", "", "", "", "", "", "", "", ""]);
     setWinnerIcon(null);
     setIconCount(0);
     setLastIcon(null);
