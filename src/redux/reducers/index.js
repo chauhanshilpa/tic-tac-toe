@@ -1,11 +1,15 @@
 import { combineReducers } from "redux";
-import {iconReducer, scoreTableReducer, someOtherReducers} from "./reducers"
+import {
+  iconReducer,
+  scoreTableReducer,
+  isGameStartedReducer,
+} from "./reducers";
 
 const rootReducers = combineReducers({
-    iconReducer,
-    scoreTableReducer,
-    someOtherReducers
-})
+  iconReducer,
+  scoreTableReducer,
+  isGameStartedReducer,
+});
 
 export default rootReducers;
 

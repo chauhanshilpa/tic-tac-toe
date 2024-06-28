@@ -1,6 +1,12 @@
-const ScoreTable = (props) => {
-  const { scoreTableRow, scoreTableBottomRowRef } = props;
+import { useSelector } from "react-redux";
 
+const ScoreTable = (props) => {
+  const { scoreTableBottomRowRef } = props;
+  
+  const scoreTableRow = useSelector(
+    (state) => state.scoreTableReducer.scoreTableRow
+  );
+//  console.log(scoreTableRow);
   return (
     <>
       <h4 className="table-heading">Score Board</h4>

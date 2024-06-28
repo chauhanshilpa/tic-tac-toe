@@ -1,23 +1,32 @@
 import React from "react";
 import icons from "./icons";
+import { bindActionCreators } from "redux";
+import * as actionCreators from "../redux/action-creators/index";
+import {useDispatch, useSelector } from "react-redux";
 
-const Buttons = (props) => {
+const Buttons = () => {
+  const dispatch = useDispatch();
+
+  const scoreTableRow = useSelector(
+    (state) => state.scoreTableReducer.scoreTableRow
+  );
+  const iconList = useSelector((state) => state.iconReducer.iconList);
+
   const {
     setIconList,
     setWinnerIcon,
     setIconCount,
     setLastIcon,
-    scoreTableRow,
     setScoreTableRow,
     setPlayer1Icon,
     setPlayer2Icon,
     setSelectedIconRowNumber,
     setIsGameStarted,
-  } = props;
-
+  } = bindActionCreators(actionCreators, dispatch);
+  
   function resetGameToContinueMatch() {
     setIconList(["", "", "", "", "", "", "", "", ""]);
-    setWinnerIcon(null);
+    setWinnerIcon(iconList);
     setIconCount(0);
     setLastIcon(null);
     setIsGameStarted(false);

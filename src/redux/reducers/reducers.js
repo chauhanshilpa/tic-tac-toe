@@ -10,9 +10,10 @@ const initialState = {
   lastIcon: null,
   isGameStarted: false,
   iconList: ["", "", "", "", "", "", "", "", ""],
+  gridIdState: 0,
 };
 
-export const playerIconReducer = (state = initialState, action) => {
+export const iconReducer = (state = initialState, action) => {
   switch (action.type) {
     case "PLAYER1_ICON":
       return { ...state, player1Icon: action.payload };
@@ -27,20 +28,19 @@ export const playerIconReducer = (state = initialState, action) => {
     case "LAST_ICON":
       return { ...state, lastIcon: action.payload };
     case "ICON_LIST":
-      return { ...state, iconList: [...action.payload] };
+      return { ...state, iconList: ((prev) => prev, [...action.payload]) };
     default:
       return state;
   }
 };
 
-export const iconRowNumber = () => {
-  
-}
-
 export const scoreTableReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_SCORE":
-      return { ...state, scoreTableRow: [...action.payload] };
+      return {
+        ...state,
+        scoreTableRow: [...state.scoreTableRow, action.payload],
+      };
     default:
       return state;
   }
@@ -55,3 +55,4 @@ export const isGameStartedReducer = (state = initialState, action) => {
     }
   }
 };
+

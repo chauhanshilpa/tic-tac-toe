@@ -28,30 +28,80 @@ export const setSelectedIconRowNumber = (id) => {
 
 // // ------------------------------------------
 // // function checkAndGetWinner2() {
-//   let winningCombination = [
-//     [0, 1, 2],
-//     [0, 4, 8],
-//     [0, 3, 6],
-//     [1, 4, 7],
-//     [2, 5, 8],
-//     [2, 4, 6],
-//     [3, 4, 5],
-//     [6, 7, 8],
-//   ];
-//     for (let combo of winningCombination){
-//       const [a,b,c] = combo
-//       if(iconList[a] !== "" && iconList[a] === iconList[b] && iconList[b] === iconList[c]){
-//         finalValue = iconList[a]
-//         return finalValue;
-//       }
+// let winningCombination = [
+//   [0, 1, 2],
+//   [0, 4, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [2, 4, 6],
+//   [3, 4, 5],
+//   [6, 7, 8],
+// ];
+//   for (let combo of winningCombination){
+//     const [a,b,c] = combo
+//     if(iconList[a] !== "" && iconList[a] === iconList[b] && iconList[b] === iconList[c]){
+//       finalValue = iconList[a]
+//       return finalValue;
 //     }
-//     setWinnerIcon(finalValue);
 //   }
+//   setWinnerIcon(finalValue);
+// }
 // ------------------------------------------------------------------
-export const setWinnerIcon = (icon) => {
+export const setWinnerIcon = (iconList) => {
+  let finalValue = null;
+  if (
+    iconList[0] !== "" &&
+    iconList[0] === iconList[1] &&
+    iconList[1] === iconList[2]
+  ) {
+    finalValue = iconList[0];
+  } else if (
+    iconList[0] !== "" &&
+    iconList[0] === iconList[4] &&
+    iconList[4] === iconList[8]
+  ) {
+    finalValue = iconList[0];
+  } else if (
+    iconList[0] !== "" &&
+    iconList[0] === iconList[3] &&
+    iconList[3] === iconList[6]
+  ) {
+    finalValue = iconList[0];
+  } else if (
+    iconList[1] !== "" &&
+    iconList[1] === iconList[4] &&
+    iconList[4] === iconList[7]
+  ) {
+    finalValue = iconList[1];
+  } else if (
+    iconList[2] !== "" &&
+    iconList[2] === iconList[5] &&
+    iconList[5] === iconList[8]
+  ) {
+    finalValue = iconList[2];
+  } else if (
+    iconList[2] !== "" &&
+    iconList[2] === iconList[4] &&
+    iconList[4] === iconList[6]
+  ) {
+    finalValue = iconList[2];
+  } else if (
+    iconList[3] !== "" &&
+    iconList[3] === iconList[4] &&
+    iconList[4] === iconList[5]
+  ) {
+    finalValue = iconList[3];
+  } else if (
+    iconList[6] !== "" &&
+    iconList[6] === iconList[7] &&
+    iconList[7] === iconList[8]
+  ) {
+    finalValue = iconList[6];
+  }
   return {
     type: "WINNER_ICON",
-    payload: icon,
+    payload: finalValue,
   };
 };
 
@@ -121,9 +171,9 @@ export const setIsGameStarted = (flag) => {
   };
 };
 
-export const setIconList = (icon) => {
+export const setIconList = (list) => {
   return {
     type: "ICON_LIST",
-    payload: icon,
+    payload: list,
   };
 };

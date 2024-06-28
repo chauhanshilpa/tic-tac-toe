@@ -1,8 +1,27 @@
 import React from "react";
 import icons from "./icons";
+import { bindActionCreators } from "redux";
+import { useDispatch, useSelector } from "react-redux";
+import * as actionCreators from "../redux/action-creators/index";
 
-const ChoosePairs = (props) => {
-  const { handleIconChoice, selectedIconRowNumber, isGameStarted } = props;
+const ChoosePairs = () => {
+  const selectedIconRowNumber = useSelector(
+    (state) => state.iconReducer.selectedIconRowNumber
+  );
+  
+  const isGameStarted = useSelector(
+    (state) => state.isGameStartedReducer.isGameStarted
+  );
+
+  const dispatch = useDispatch();
+  const { setPlayer1Icon, setPlayer2Icon, setSelectedIconRowNumber } =
+    bindActionCreators(actionCreators, dispatch);
+
+  function handleIconChoice(icon1, icon2, id) {
+    setPlayer1Icon(icon1);
+    setPlayer2Icon(icon2);
+    setSelectedIconRowNumber(id);
+  }
 
   return (
     <>
@@ -11,12 +30,8 @@ const ChoosePairs = (props) => {
         <table className="table table-bordered table-hover">
           <thead className="sticky-top">
             <tr>
-              <th scope="col">
-                Player1
-              </th>
-              <th scope="col">
-                Player2
-              </th>
+              <th scope="col">Player1</th>
+              <th scope="col">Player2</th>
             </tr>
           </thead>
           <tbody>
