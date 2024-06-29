@@ -8,7 +8,7 @@ const ChoosePairs = () => {
   const selectedIconRowNumber = useSelector(
     (state) => state.iconReducer.selectedIconRowNumber
   );
-  
+
   const isGameStarted = useSelector(
     (state) => state.isGameStartedReducer.isGameStarted
   );

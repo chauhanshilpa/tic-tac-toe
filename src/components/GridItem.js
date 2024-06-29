@@ -43,7 +43,6 @@ const GridItem = (props) => {
     }
   }
 
-  console.log(gridItemId, icon);
 
   return (
     <div

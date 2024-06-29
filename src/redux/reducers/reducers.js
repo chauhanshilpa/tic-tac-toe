@@ -10,7 +10,6 @@ const initialState = {
   lastIcon: null,
   isGameStarted: false,
   iconList: ["", "", "", "", "", "", "", "", ""],
-  gridIdState: 0,
 };
 
 export const iconReducer = (state = initialState, action) => {
@@ -29,6 +28,27 @@ export const iconReducer = (state = initialState, action) => {
       return { ...state, lastIcon: action.payload };
     case "ICON_LIST":
       return { ...state, iconList: ((prev) => prev, [...action.payload]) };
+    case "RESET_GAME_TO_CONTINUE_MATCH":
+      return {
+        ...state,
+        iconList: ["", "", "", "", "", "", "", "", ""],
+        winnerIcon: null,
+        iconCount: 0,
+        lastIcon: null,
+        isGameStarted: false,
+      };
+    case "RESET_GAME_WITH_NEW_TABLE":
+      return {
+        ...state,
+        iconList: ["", "", "", "", "", "", "", "", ""],
+        winnerIcon: null,
+        iconCount: 0,
+        lastIcon: null,
+        isGameStarted: false,
+        player1Icon: icons[3].icon1,
+        player2Icon: icons[3].icon2,
+        selectedIconRowNumber: 3,
+      };
     default:
       return state;
   }
@@ -41,6 +61,8 @@ export const scoreTableReducer = (state = initialState, action) => {
         ...state,
         scoreTableRow: [...state.scoreTableRow, action.payload],
       };
+    case "RESET_GAME_WITH_NEW_TABLE":
+      return { ...state, scoreTableRow: [] };
     default:
       return state;
   }
@@ -50,9 +72,12 @@ export const isGameStartedReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GAME_STARTED":
       return { ...state, isGameStarted: action.payload };
+    case "RESET_GAME_TO_CONTINUE_MATCH":
+      return { ...state, isGameStarted: false };
+    case "RESET_GAME_WITH_NEW_TABLE":
+      return { ...state, isGameStarted: false };
     default: {
       return state;
     }
   }
 };
-
