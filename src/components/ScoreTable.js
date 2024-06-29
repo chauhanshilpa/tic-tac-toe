@@ -1,11 +1,8 @@
-import { useSelector } from "react-redux";
+import useGameSelector from "../hooks";
 
 const ScoreTable = (props) => {
   const { scoreTableBottomRowRef } = props;
-  
-  const scoreTableRow = useSelector(
-    (state) => state.scoreTableReducer.scoreTableRow
-  );
+  const { scoreTableRow } = useGameSelector();
 
   return (
     <>

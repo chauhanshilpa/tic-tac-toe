@@ -1,17 +1,12 @@
 import React from "react";
 import icons from "./icons";
 import { bindActionCreators } from "redux";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actionCreators from "../redux/action-creators/index";
+import useGameSelector from "../hooks";
 
 const ChoosePairs = () => {
-  const selectedIconRowNumber = useSelector(
-    (state) => state.iconReducer.selectedIconRowNumber
-  );
-
-  const isGameStarted = useSelector(
-    (state) => state.isGameStartedReducer.isGameStarted
-  );
+  const { selectedIconRowNumber, isGameStarted } = useGameSelector();
 
   const dispatch = useDispatch();
   const { setPlayer1Icon, setPlayer2Icon, setSelectedIconRowNumber } =

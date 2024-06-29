@@ -1,19 +1,20 @@
 import { bindActionCreators } from "redux";
 import * as actionCreators from "../redux/action-creators/index";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import useGameSelector from "../hooks";
 
 const GridItem = (props) => {
   const { gridItemId, icon } = props;
-
-  const iconList = useSelector((state) => state.iconReducer.iconList);
-  const winnerIcon = useSelector((state) => state.iconReducer.winnerIcon);
-  const lastIcon = useSelector((state) => state.iconReducer.lastIcon);
-  const player1Icon = useSelector((state) => state.iconReducer.player1Icon);
-  const player2Icon = useSelector((state) => state.iconReducer.player2Icon);
-  const iconCount = useSelector((state) => state.iconReducer.iconCount);
+  const {
+    iconList,
+    winnerIcon,
+    lastIcon,
+    player1Icon,
+    player2Icon,
+    iconCount,
+  } = useGameSelector();
 
   const dispatch = useDispatch();
-
   const {
     setWinnerIcon,
     setIconCount,
@@ -24,7 +25,6 @@ const GridItem = (props) => {
   } = bindActionCreators(actionCreators, dispatch);
 
   function handleGridItemClick(gridId) {
-
     if (iconList[gridId] === "" && winnerIcon === null) {
       const icon = lastIcon === player1Icon ? player2Icon : player1Icon;
       setLastIcon(icon);
@@ -42,7 +42,6 @@ const GridItem = (props) => {
       setIsGameStarted(true);
     }
   }
-
 
   return (
     <div

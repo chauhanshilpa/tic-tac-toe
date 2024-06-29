@@ -1,15 +1,12 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreators from "../redux/action-creators/index";
-import {useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import useGameSelector from "../hooks";
 
 const Buttons = () => {
+  const { scoreTableRow } = useGameSelector();
   const dispatch = useDispatch();
-
-  const scoreTableRow = useSelector(
-    (state) => state.scoreTableReducer.scoreTableRow
-  );
-
   const { resetGameToContinueMatch, resetGameWithNewTable } =
     bindActionCreators(actionCreators, dispatch);
 
@@ -20,7 +17,7 @@ const Buttons = () => {
           type="button"
           className="btn btn-primary mt-4"
           onClick={resetGameToContinueMatch}
-          disabled={scoreTableRow.length >= 10 ? true: false}
+          disabled={scoreTableRow.length >= 10 ? true : false}
         >
           Play Again
         </button>
