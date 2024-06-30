@@ -7,8 +7,6 @@ The player who succeeds in placing three of their marks in a horizontal, vertica
  
  I have re-implemented this project in NextJS to showcase my NextJS skills: [tic-tac-toe-next](https://github.com/chauhanshilpa/tic-tac-toe-NextJS)
 
- You can try out the application at [link](tic-tac-toe-next-zeta.vercel.app)
-
 ## Installation
 
  Open terminal of your local machine, clone repository, run the command `npm install` and  then `run npm start`
