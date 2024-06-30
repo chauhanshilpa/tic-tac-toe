@@ -4,6 +4,10 @@ tic-tac-toe is a two-player game in which players take turns on a 3x3 grid and c
 The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
    <img width="960" alt="game user-interface" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/2cd87d2d-7ba3-4567-9533-28dd256e7b04">
+ 
+ I have re-implemented this project in NextJS to showcase my NextJS skills: [tic-tac-toe-next](https://github.com/chauhanshilpa/tic-tac-toe-NextJS)
+
+ You can try out the application at [link](tic-tac-toe-next-zeta.vercel.app)
 
 ## Installation
 
@@ -26,9 +30,6 @@ The game features include:
 3) A Play Again button to play next round and a Reset Table button that allows players to start a new game.
 4) Choices between desired icons pair for players.
 5) A score table that shows the pair of icons with which game was played and the score obtained by both players.
-
-<p float="center"><img width="15%" alt="tic-tac-toe-01" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/e439df6e-449c-40d9-97cd-c0824fbd2432"> <img width="15%" alt="tic-tac-toe-04" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/4906ea3c-60f8-45e1-99fd-04400d2f869d"> <img width="15%" alt="tic-tac-toe-02" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/7b83463a-ef97-4767-92f2-afe50b144839"> <img width="15%" alt="tic-tac-toe-03" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/1f7330c3-2436-47b2-a4f2-ed62f5bad189"></p>
-
 
 ## Credits
 
