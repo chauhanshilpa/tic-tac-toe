@@ -3,9 +3,11 @@
 tic-tac-toe is a two-player game in which players take turns on a 3x3 grid and can choose pairs of icon to play with. 
 The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
+I have re-implemented this project in NextJS to showcase my NextJS skills: [tic-tac-toe-next](https://github.com/chauhanshilpa/tic-tac-toe-NextJS)
+
+A separate branch named `with-redux` has been created in this repository for learning purpose and to simplify state management using [Redux](https://redux.js.org/).
+
    <img width="960" alt="game user-interface" src="https://github.com/chauhanshilpa/tic-tac-toe/assets/101130846/2cd87d2d-7ba3-4567-9533-28dd256e7b04">
- 
- I have re-implemented this project in NextJS to showcase my NextJS skills: [tic-tac-toe-next](https://github.com/chauhanshilpa/tic-tac-toe-NextJS)
 
 ## Installation
 
